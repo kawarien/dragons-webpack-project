@@ -1,5 +1,6 @@
 import parser from './core/utils';
 import {dragons} from './dragons.js';
+import {relationships} from './relationships.js';
 import "babel-polyfill";
 
 // console.log("App.js")
@@ -14,13 +15,14 @@ import "babel-polyfill";
 
 
 document.body.onload = (async () => {
-    // j'attends un 500 ms pour m'assurer que mon document s'est chargé completement. c'est pour ne pas avoir 
+    // j'attends 500 ms pour m'assurer que mon document s'est chargé completement. 
    await new Promise(resolve => setTimeout(resolve, 500));
     addCount ();
 
     //Apres 2 secondes j'affiche la liste des dragons
     await new Promise(resolve => setTimeout(resolve, 1000));
-    addDragons()
+    addDragons();
+    relationShips()
 
 
 
@@ -39,12 +41,28 @@ document.body.onload = (async () => {
             li = document.createElement("li");
             li.innerHTML = `${id} , ${name} ${element?element: '' }`;
             listDragon.appendChild(li)
+            let res = relationShips(id);
+            console.log(res)
+            
         
         }
 
         
 
     
+    }
+
+
+    function relationShips(id) {
+        for (const relation of relationships) {
+            const {id : idDragon, relations } = relation;
+            if(id === idDragon) {
+                return id
+                
+            }   
+            
+        }
+        
     }
     
 
