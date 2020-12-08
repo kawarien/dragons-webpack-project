@@ -16,7 +16,7 @@ module.exports = {
         open: true,
         hot : true
     },
-    // transpilateur 
+    // transpilateur  
       module: {
         rules: [
         {
