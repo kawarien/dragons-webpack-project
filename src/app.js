@@ -32,20 +32,18 @@ document.body.onload = (async () => {
     
     function addDragons () {
         let listDragon = document.querySelector('#listdragon');
-        
-
+        let li = null;
         for(const dragon of dragons.names){
             const {id, name, element } = dragon;
             console.log('listes dragons', dragon );
+            li = document.createElement("li");
+            li.innerHTML = `${id} , ${name} ${element?element: '' }`;
+            listDragon.appendChild(li)
         
         }
-        var myNodeList = document.querySelectorAll('#listdragon');
-        return dragons.from(myNodeList).forEach(function(el) {
-            console.log('ee', el);
-          });
+
         
-    
-        //return document.querySelector("#listdragon").innerHTML = dragons.names
+
     
     }
     
